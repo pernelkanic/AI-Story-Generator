@@ -1,6 +1,4 @@
 const fs  = require("fs");
-const tts = require("google-tts-api");
-const axios = require("axios");
 const { v4: uuidv4 } = require("uuid");
 const PlayHT = require("playht");
 require('dotenv').config();
