@@ -7,8 +7,7 @@ const url = "https://api.segmind.com/v1/flux-1.1-pro";
 
 async function GenerateImage(index, text) {
   const formData = new FormData();
-
-formData.append('seed', 12345);
+  formData.append('seed', 12345);
   formData.append('width', 1024);
   formData.append('height', 1024);
   formData.append('prompt', text);
@@ -16,7 +15,7 @@ formData.append('seed', 12345);
   formData.append('output_format', "png");
   formData.append('output_quality', 80);
   formData.append('safety_tolerance', 2);
-  formData.append('prompt_upsampling', false);
+  formData.append('prompt_upsampling', 'false');
 
   try {
     const response = await axios.post(url, formData, {
@@ -24,18 +23,23 @@ formData.append('seed', 12345);
         'x-api-key': api_key,
         ...formData.getHeaders(),
       },
+      responseType: 'arraybuffer', // Expect binary data
    
     });
+    console.log(response);
     if(response.data){
-        // const buffer = Buffer.from(response.data);
-        // const imagePath = `../generated_images/image_${index}.jpg`
-        // fs.writeFileSync(imagePath, buffer);
-        // console.log(`Image for subtitle ${index} saved as ${imagePath}`);
-        console.log(response.data); 
-         return response.data;
-    }
+        if (Buffer.isBuffer(response.data)) {
+            // Write the image to a file
+            const imagePath = `../generated_images/image_${index}.jpg`;
+            fs.writeFileSync(imagePath, response.data);
+            console.log(`Image for subtitle ${index} saved as ${imagePath}`);
+            return imagePath;
+          } else {
+            console.error("Received data is not a valid Buffer.");
+          }
+        }
   } catch (error) {
-    console.error('Error:', error.response ? error.response.data : error.message);
+    console.error('Error:', error.response ? error.response.data : error.message );
   }
 }
 module.exports={

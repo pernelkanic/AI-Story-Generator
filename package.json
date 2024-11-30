@@ -10,13 +10,16 @@
   "description": "",
   "dependencies": {
     "@google-cloud/text-to-speech": "^5.6.0",
-    "axios": "^1.7.7",
+    "axios": "^1.7.8",
     "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "form-data": "^4.0.1",
     "fs": "^0.0.1-security",
     "google-tts-api": "^2.0.2",
     "install": "^0.13.0",
     "npm": "^10.9.0",
+    "playht": "^0.14.0",
     "subtitles-parser": "^0.0.2",
     "util": "^0.12.5",
     "uuid": "^11.0.3"
