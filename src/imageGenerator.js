@@ -3,6 +3,7 @@ const FormData = require('form-data');
 const fs = require('fs');
 
 const api_key = process.env.IMAGE_API_KEY;
+//for now used segmind as they give  1$ to test out the api.
 const url = "https://api.segmind.com/v1/flux-1.1-pro";
 //need to fine tune the images a bit according to the subs and add rate limiting.
 async function GenerateImage(index, text) {
