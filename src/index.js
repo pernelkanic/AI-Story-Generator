@@ -2,6 +2,7 @@ const { ParseSubtitleFromSrt } = require('./parseSrtFile');
 const { TextToSpeechHandler} = require('./audioGenerator');
 const {GenerateImage}  = require("./imageGenerator");
 
+//todo: generate accurate subtitle text for the image generation according to the story gist given by the user and generate the srt file of it.
 const inputSRTPath = "../subtitles/minions.srt";
 const rateLimitdelay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 void async function main(){

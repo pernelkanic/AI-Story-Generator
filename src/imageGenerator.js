@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const api_key = process.env.IMAGE_API_KEY;
 const url = "https://api.segmind.com/v1/flux-1.1-pro";
-
+//need to fine tune the images a bit according to the subs and add rate limiting.
 async function GenerateImage(index, text) {
   const formData = new FormData();
   formData.append('seed', 12345);
@@ -23,13 +23,12 @@ async function GenerateImage(index, text) {
         'x-api-key': api_key,
         ...formData.getHeaders(),
       },
-      responseType: 'arraybuffer', // Expect binary data
+      responseType: 'arraybuffer', 
    
     });
     console.log(response);
     if(response.data){
         if (Buffer.isBuffer(response.data)) {
-            // Write the image to a file
             const imagePath = `../generated_images/image_${index}.jpg`;
             fs.writeFileSync(imagePath, response.data);
             console.log(`Image for subtitle ${index} saved as ${imagePath}`);
