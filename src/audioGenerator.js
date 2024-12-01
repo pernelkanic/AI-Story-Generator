@@ -1,6 +1,8 @@
 const fs  = require("fs");
 const { v4: uuidv4 } = require("uuid");
 const PlayHT = require("playht");
+const audioconcat = require('audioconcat')
+ 
 require('dotenv').config();
 
 PlayHT.init({
@@ -26,6 +28,24 @@ async function TextToSpeechHandler(text){
         console.error("Error Converting Text To Speech " + error);
     }
 }
+//might work , too lazy to install ffmpeg , which is needed for audioconcat to work but this would do the job for now according to the docs , so just  someone fucking help me with this fucking code so we can test the fuckingg codeeeeee....ahh i can't...
+async function MergeAudio(audioFiles){
+    const outputFile = '../temp/combined_output.mp3';
+    audioconcat(audioFiles)
+  .concat(outputFile)
+  .on('start', function (command) {
+    console.log(command)
+  })
+  .on('error', function (err, stdout, stderr) {
+    console.error(err)
+    console.error(stderr)
+  })
+  .on('end', function (output) {
+    console.error('Audio created in-', output)
+  })
+    
+}
 module.exports = {
-    TextToSpeechHandler
+    TextToSpeechHandler,
+    MergeAudio
 }

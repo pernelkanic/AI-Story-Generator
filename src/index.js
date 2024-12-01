@@ -1,5 +1,5 @@
 const { ParseSubtitleFromSrt } = require('./parseSrtFile');
-const { TextToSpeechHandler} = require('./audioGenerator');
+const { TextToSpeechHandler  ,MergeAudio } = require('./audioGenerator');
 const {GenerateImage}  = require("./imageGenerator");
 
 //todo: generate accurate subtitle text for the image generation according to the story gist given by the user and generate the srt file of it.
@@ -14,9 +14,9 @@ void async function main(){
         const duration = line.endTime - line.startTime;
         const subtitleIndex = index;
         const tasks = [
-            GenerateImage(subtitleIndex, line.text).then(imageFile => {
-                    imageFiles.push(imageFile);
-                }),
+            // GenerateImage(subtitleIndex, line.text).then(imageFile => {
+            //         imageFiles.push(imageFile);
+            //     }),
             TextToSpeechHandler(line.text).then(audioFile => {
                     audioFiles.push(audioFile);
                 })
@@ -25,6 +25,8 @@ void async function main(){
         await rateLimitdelay(5000);
     }
     //todo : need to handle the merge logic using audioFiles array.
+    MergeAudio(audioFiles);
+
     //todo : merge the audio and subtitle text with the image.
     console.log('Final audio saved as final/final_audio.mp3');
 }();
