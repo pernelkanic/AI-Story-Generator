@@ -3,6 +3,7 @@ const parser = require("subtitles-parser");
 const { v4: uuidv4 } = require("uuid");
 
 const UUID = uuidv4();
+//need to change the hardcoding.
 const outputSubtitlePath = "../subtitles/" + UUID +".json"//might need a object storage
 //@param
 // @filepath - subtitle filepath as the input
