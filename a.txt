@@ -1,0 +1,20 @@
+text: 
+"
+there was once a framer who lived in the framland.
+he was cultivating potato.
+he was rich.
+"
+for audio gen: 
+"there was once a framer who lived in the framland.
+he was cultivating potato.
+he was rich.
+"
+
+image-gen:
+[
+"there was once a framer who lived in the framland",
+"he was cultivating potato",
+"he was rich",
+]
+
+

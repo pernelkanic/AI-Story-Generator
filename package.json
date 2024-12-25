@@ -10,6 +10,7 @@
   "description": "",
   "dependencies": {
     "@google-cloud/text-to-speech": "^5.6.0",
+    "@google/generative-ai": "^0.21.0",
     "audioconcat": "^0.1.4",
     "axios": "^1.7.8",
     "body-parser": "^1.20.3",
@@ -22,6 +23,7 @@
     "google-tts-api": "^2.0.2",
     "install": "^0.13.0",
     "npm": "^10.9.0",
+    "path": "^0.12.7",
     "playht": "^0.14.0",
     "subtitles-parser": "^0.0.2",
     "util": "^0.12.5",
